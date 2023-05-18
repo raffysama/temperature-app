@@ -30,7 +30,7 @@ function App() {
       setColor('rgb(7, 252, 137)');
       setWarn('');
     }else if (count >= 14) {
-      setColor('rgb(174, 228, 245)');
+      setColor('rgb(166, 217, 236)');
       setWarn('');
     }
 
