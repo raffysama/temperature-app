@@ -6,6 +6,8 @@ function App() {
 
   const [count, setCount] = useState(0);
   const [color, setColor] = useState('');
+  const [warn, setWarn] = useState('');
+  const [textColor, setTextColor] = useState('')
 
 
   useEffect(() => {
@@ -13,13 +15,25 @@ function App() {
   }, [count]);
   
   const handleColor = () => {
-    if (count >= 100) {
+    if (count >= 32) {
       setColor('red');
-    } else if (count >= 75) {
-      setColor('orange');
-    } else if (count >= 30) {
-      setColor('blue');
+      setWarn('Warning!')
+      setTextColor('red'); 
+    } else if (count >= 26) {
+      setColor('rgb(250, 82, 4)');
+      setWarn('Caution!');
+      setTextColor('yellow'); 
+    } else if (count >= 20) {
+      setColor('rgb(238, 123, 47)');
+      setWarn('');
+    } else if (count >= 15) {
+      setColor('rgb(7, 252, 137)');
+      setWarn('');
+    }else if (count >= 14) {
+      setColor('rgb(174, 228, 245)');
+      setWarn('');
     }
+
   };
   
   const handleIncrement = () =>{
@@ -33,12 +47,18 @@ function App() {
   return (
     <div className="App">
       <div className='outer-box'>
-      <div className="inner-box" style={{background: color}}>
-        <p className='inner-text'>{count}°C</p>
+        <div className='box-bg'>
+          <div className="inner-box" style={{background: color}}>
+            <p className='inner-text'>{count}°C</p>
+          </div>
+          <div className='warn-text' style={{color : textColor}} >
+            <h2>{warn}</h2>
+          </div> 
+          <button onClick={handleIncrement}>+</button>
+          <button onClick={handleDecrement}>-</button>
+        </div>
       </div>
-      </div>
-        <button onClick={handleIncrement}>+</button>
-        <button onClick={handleDecrement}>-</button>
+      
     </div>
   );
 }
